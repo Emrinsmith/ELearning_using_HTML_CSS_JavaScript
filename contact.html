@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet"href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="">e-LEARNING</a>
+            </div>
+          <div class="navmenu">
+              <a href="E:\LEARNING\index.html">HOME</a>
+              <a href="">ABOUT</a>
+              <a href="E:\LEARNING\courses.html">COURSES</a>
+              <a href="E:\LEARNING\Page.html">PAGE</a>
+              <a href="E:\LEARNING\contact.html">CONTACT</a>
+          </div>
+            <div class="navbut">
+             <button style="padding-top:20px;padding-bottom: 20px;padding-right: 50px;padding-left: 50px;"><a href="E:\LEARNING\register.html">Join Now</a></button>
+             </div>
+        </div>
+    </header>
+   
+    
+   <section class="overing">
+    <div class="main">
+        <div class="over"></div>
+          <img src="img/carousel-1.jpg" height="360px"width="100%">
+            <div class="cont">
+              <h2>Contact</h2>
+            </div>
+         <div class="nav">
+           <a href="">Home /</a>
+           <a href="E:\LEARNING\Page.html">Pages /</a>
+           <a href="">Contact /</a>
+        </div>
+    </div>
+   </section>
+   
+   <section class="con">
+    <div class="contactus">
+        <h4 style="color: #06bbcc;">CONTACT US</h4>
+        <h1>Contact For Any Query</h1>
+    </div>
+   </section>
+
+   <section class="tou">
+       <div class="touch">
+            <div class="get">
+                <h4>Get in Touch</h4>
+                <p>The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done.</p>
+                    <div class="in">
+                        <h3>Office</h3>
+                        <p>123 Street, New York, USA</p>
+                        <h3>Moblile</h3> 
+                         <p>+012 345 67890</p> 
+                        <h3>Email</h3>
+                        <p>info@example.com</p>
+                    </div>
+            </div>
+            <div class="map">
+                    <iframe class="maping"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                        frameborder="0" style="min-height: 300px; border:0;" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
+
+            </div>
+      
+            <div class="table">
+            <form>
+                <div class="name">
+                    <div class="name1">
+                        <input type="text" id="name"  name="name" placeholder="Your Name"> </div>
+                    <div class="name1">
+                        <input type="text" id="email" name="email" placeholder="Your Email"> <br> </div>
+                </div>
+                <div class="sub">
+                        <input type="text" id="subject" name="subject" placeholder="subject"> <br>
+                        
+                        <textarea name="comment" id="usrform">Message</textarea> <br>
+                        
+                        <button id="text-align: center;"id="submitBtn">Send Message</button><br>
+
+                        <a href="E:\LEARNING\message.html">Go to message List</a>
+                </div>
+            </form>
+            </div>
+
+
+
+     </div>
+   </section>
+   <footer>
+    <div class="color">
+     <div class="down">
+        
+           
+        
+         <div class="last">
+            <h3>Quick Link</h3> 
+            <a href="">About us</a><br>
+            <a href="E:\LEARNING\contact.html">Contact us</a><br>
+            <a href="E:\LEARNING\courses.html">Courses</a>
+         </div>
+
+            <div class="contact">
+                
+                <h3>Contact</h3>
+              <p>🏠123 Street, New York, USA</p>
+              <p>📞 +012 345 67890</p>
+              <p>📩 info@example.com</p>
+          </div>
+         
+          <div class="form">
+            <h3>NewsLetter</h3>
+            <form>
+                <input type="text" id="email" name="email" placeholder="Your email" required >
+            </form>
+
+          </div>
+
+     </div>
+     </div>
+  </footer>
+
+
+  <script>
+    
+ document.getElementById('submitBtn').addEventListener('click',function(event) {
+    event.preventDefault(); // Prevent form submission
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const comment = document.getElementById('usrform').value;
+
+    if (name && email && subject && comment) {
+        const forming = JSON.parse(localStorage.getItem('forming')) || [];
+        forming.push({ name, email, subject, comment });
+        localStorage.setItem('forming', JSON.stringify(forming));
+        alert('Form submitted successfully!');
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('subject').value = '';
+        document.getElementById('usrform').value = '';
+    } else {
+        alert('Please fill in all fields!');
+    }
+});
+
+</script>
+
+
+
+
+
+</body>
+</html>

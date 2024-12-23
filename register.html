@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet"href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+  
+      .forms {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        margin-top: 50px;
+      }
+  
+      h1 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+  
+     .forms input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+  
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+  
+      button:hover {
+        background-color: #218838;
+      }
+  
+      a {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #ff8000;
+        text-decoration: none;
+      }
+  
+     
+      
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </style>
+</head>
+<body>
+
+
+
+
+
+    <!-- <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="">e-LEARNING</a>
+            </div>
+          <div class="navmenu">
+              <a href="E:\LEARNING\index.html">HOME</a>
+              <a href="">ABOUT</a>
+              <a href="E:\LEARNING\courses.html">COURSES</a>
+              <a href="">PAGE</a>
+              <a href="E:\LEARNING\contact.html">CONTACT</a>
+          </div>
+            <div class="navbut">
+             <button style="padding-top:20px;padding-bottom: 20px;padding-right: 50px;padding-left: 50px;">Join Now</button>
+             </div>
+        </div>
+    </header> -->
+
+    <section class="list">
+      <center>
+      <div class="forms">
+        <h1>Register form</h1>
+       <input type="text" id="name"placeholder="FirstName"><br>
+ <input type="text" id="LastName"placeholder="LastName"><br>
+ <input type="text" id="email"placeholder="email"><br>
+ <input type="number"id="date"placeholder="Enter your Age"><br>
+<input type="text"id="education"placeholder="Enter your Qualification"><br>
+ <input type="number"id="phonenumber"placeholder="phonenumber"><br>
+ <input type="text" id="course" placeholder="Enter your course"><br>
+ <input type="text" id="address" placeholder="address"><br>
+ <input type="text" id="district"placeholder="district"><br>
+ <input type="text" id="state" placeholder="state"><br>
+ <button id="submitBtn">Submit</button>
+ <a href="E:\LEARNING\registers.html">Go to form List</a>
+
+
+
+      </div>
+    </section>
+</center>
+        <!-- <footer>
+            <div class="color">
+             <div class="down">
+                
+                   
+                
+                 <div class="last">
+                    <h3>Quick Link</h3> 
+                    <a href="">About us</a><br>
+                    <a href="E:\LEARNING\contact.html">Contact us</a><br>
+                    <a href="E:\LEARNING\courses.html">Courses</a>
+                 </div>
+        
+                    <div class="contact">
+                        <h3>Contact</h3>
+                      <p>123 Street, New York, USA</p>
+                      <p> +012 345 67890</p>
+                      <p> info@example.com</p>
+                  </div>
+                 
+                  <div class="form">
+                    <h3>NewsLetter</h3>
+                    <form>
+                        <input type="text" id="email" name="email" placeholder="Your email" required >
+                    </form>
+        
+                  </div>
+        
+             </div>
+             </div>
+          </footer> -->
+       
+          
+       <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+          const name = document.getElementById('name').value;
+          const LastName = document.getElementById('LastName').value;
+          const email = document.getElementById('email').value;
+          const date = document.getElementById('date').value;
+          const education = document.getElementById('education').value;
+          const phonenumber = document.getElementById('phonenumber').value;
+          const course = document.getElementById('course').value;
+          const address = document.getElementById('address').value;
+          const district = document.getElementById('district').value;
+          const state = document.getElementById('state').value;
+          
+    
+          if (name && LastName && email && date && education && phonenumber && course && address && district && state) {        
+            const forming = JSON.parse(localStorage.getItem('forming')) || [];
+            forming.push({ name, LastName, email, date, education, phonenumber, course, address, district,state });
+            localStorage.setItem('forming', JSON.stringify(forming));
+            alert('form added successfully!');
+            document.getElementById('name').value = '';
+            document.getElementById('LastName').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('date').value = '';
+            document.getElementById('education').value = '';
+            document.getElementById('phonenumber').value = '';
+            document.getElementById('course').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('district').value = '';
+            document.getElementById('state').value = '';
+          } else {
+            alert('Please fill in all fields!');
+          }
+        });
+      </script>
+
+          
+
+
+
+
+    
+</body>
+</html>

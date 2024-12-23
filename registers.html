@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(11, 1fr);
+      gap: 10px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .grid div {
+      padding: 10px;
+      background-color: #f4f4f4;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .edit, .delete {
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 3px;
+    }
+
+    .delete {
+      background-color: #dc3545;
+    }
+
+    .edit:hover {
+      background-color: #0056b3;
+    }
+
+    .delete:hover {
+      background-color: #c82333;
+    }
+
+    .add-employee {
+      display: block;
+      margin: 20px 0;
+      text-align: center;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+
+    .add-employee:hover {
+      background-color: #218838;
+    }
+  </style>
+    
+
+</head>
+<body>
+    <h1>Register List</h1>
+  <div class="grid" id="formsGrid">
+    <!-- Employee details will be injected here -->
+  </div>
+
+  <a href="E:\LEARNING\register.html" class="add-employee">Add New form</a>
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const formsGrid = document.getElementById('formsGrid');
+    
+        function loadforming() {
+          formsGrid.innerHTML = ''; // Clear the grid
+          const forming = JSON.parse(localStorage.getItem('forming')) || [];
+          forming.forEach((employee, index) => {
+            const { name, LastName, email, date, education, phonenumber, course, address, district,state } = employee;
+    
+            const nameDiv = document.createElement('div');
+            const LastNameDiv = document.createElement('div');
+            const emailDiv = document.createElement('div');
+            const dateDiv = document.createElement('div');
+            const educationDiv = document.createElement('div');
+            const phonenumberDiv = document.createElement('div');
+            const courseDiv = document.createElement('div');
+            const addressDiv = document.createElement('div');
+            const districtDiv = document.createElement('div');
+            const stateDiv = document.createElement('div');
+            const actionDiv = document.createElement('div');
+    
+            nameDiv.textContent = name;
+            LastNameDiv.textContent = LastName;
+            emailDiv.textContent = email;
+            dateDiv.textContent = date;
+            educationDiv.textContent = education;
+            phonenumberDiv.textContent = phonenumber;
+            courseDiv.textContent = course;
+            addressDiv.textContent = address;
+            districtDiv.textContent = district;
+            stateDiv.textContent = state;
+    
+    
+            const editBtn = document.createElement('button');
+            editBtn.textContent = 'Edit';
+            editBtn.classList.add('edit');
+            editBtn.addEventListener('click', () => editEmployee(index));
+    
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.classList.add('delete');
+            deleteBtn.addEventListener('click', () => deleteEmployee (index));
+    
+            const buttonContainer = document.createElement('div');
+            buttonContainer.classList.add('buttons');
+            buttonContainer.appendChild(editBtn);
+            buttonContainer.appendChild(deleteBtn);
+    
+            actionDiv.appendChild(buttonContainer);
+    
+            formsGrid.appendChild(nameDiv);
+            formsGrid.appendChild(LastNameDiv);
+            formsGrid.appendChild(emailDiv);
+            formsGrid.appendChild(dateDiv);
+            formsGrid.appendChild(educationDiv);
+            formsGrid.appendChild(phonenumberDiv);
+            formsGrid.appendChild(courseDiv);
+            formsGrid.appendChild(addressDiv);
+            formsGrid.appendChild(districtDiv);
+            formsGrid.appendChild(stateDiv);
+            formsGrid.appendChild(actionDiv);
+          });
+        }
+    
+        function editEmployee(index) {
+          const forming = JSON.parse(localStorage.getItem('forming')) || [];
+          const employee = forming[index];
+          const name = prompt('Edit Name', employee.name);
+          const LastName = prompt('Edit LastName', employee.LastName);
+          const email = prompt('Edit Email', employee.email);
+          const date = prompt('Edit date', employee.date);
+          const education = prompt('Edit education', employee.education);
+          const phonenumber = prompt('Edit phonenumber', employee.phonenumber);
+          const course = prompt('Edit course', employee.course);
+          const address = prompt('Edit address', employee.address);
+          const district = prompt('Edit district', employee.district);
+          const state = prompt('Edit state', employee.state);
+    
+          if (name && LastName && email && date && education && phonenumber && course && address && district && state) {
+            forming[index] = { name, LastName, email, date, education, phonenumber, course, address, district, state };
+            localStorage.setItem('forming', JSON.stringify(forming));
+            loadforming();
+          } else {
+            alert('All fields are required!');
+          }
+        }
+    
+        function deleteEmployee(index) {
+          const forming = JSON.parse(localStorage.getItem('forming')) || [];
+          forming.splice(index, 1);
+          localStorage.setItem('forming', JSON.stringify(forming));
+          loadforming();
+        }
+    
+        window.onload = loadforming;
+      </script>
+      
+    
+
+
+    
+</body>
+</html>
